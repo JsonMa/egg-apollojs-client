@@ -20,7 +20,7 @@ $ npm i egg-apollojs --save
 
 ```js
 // {app_root}/config/plugin.js
-exports.apollo = {
+exports.apollojs = {
   enable: true,
   package: 'egg-apollojs',
 };

@@ -7,7 +7,7 @@ const path = require('path');
 class Update extends Subscription {
   static get schedule() {
     return {
-      interval: '2s',
+      interval: '30s',
       type: 'worker',
     };
   }
