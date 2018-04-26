@@ -43,12 +43,46 @@ exports.apollo = {
 ## Configuration
 
 ```js
-// {app_root}/config/config.default.js
-exports.apollo = {
+// {app_root}/config/apollo.js
+module.exports = {
+  configServerUrl: process.env.configServerUrl,
+  appId: 'node-test-1', // 配置中心命名和项目名称保持一致,
+  clusterName: 'default',
+  namespaceName: ['application', 'python.PostgreSQL', 'python.redis', 'python.ops'], // 两个namespace相同配置，application配置会覆盖'python.mysql'
 };
+
 ```
 
-see [config/config.default.js](config/config.default.js) for more detail.
+```js
+// {app_root}/preload.js
+// 初始化env并存贮
+require('egg-apollo').init(__dirname + '/config/apollo.js');
+```
+
+```js
+// package.json
+// 配置不同的configServerUrl 对应不同的环境
+// 开发环境
+"dev": "configServerUrl=http://127.0.0.1:8084 node preload.js && configServerUrl=http://127.0.0.1:8084 egg-bin dev"
+
+
+// 执行npm start 之前 设置apollo地址环境变量: configServerUrl=http://127.0.0.1:8084 npm start
+//部署环境
+"start":"node preload.js &&  eggctl start"
+```
+
+```js
+// {app_root}/config/config.default.js
+'use strict';
+
+// 加载process.env
+require('egg-apollo').apollo.setEnv(); 
+
+module.exports = appInfo => {
+  const config = {};
+  config.test1 = process.env.test1;
+}
+```
 
 ## Example
 
