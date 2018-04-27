@@ -1,10 +1,8 @@
 # egg-apollojs
 
-[![NPM version][npm-image]][npm-url]
-[![npm download][download-image]][download-url]
+![NPM version][npm-image]
 
 [npm-image]: https://img.shields.io/npm/v/egg-apollojs.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-apollojs
 
 <!--
 egg plugin for apollo .support hot patch
