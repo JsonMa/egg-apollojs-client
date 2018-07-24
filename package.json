@@ -1,6 +1,6 @@
 {
   "name": "egg-apollojs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "apollo plugin for egg.js & support hot patch",
   "eggPlugin": {
     "name": "apollojs"
